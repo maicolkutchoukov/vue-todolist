@@ -1,0 +1,16 @@
+.my-container{
+    width: 600px;
+    margin: 0 auto;
+}
+
+.done {
+    color : green
+}
+
+.not-done{
+    color : red
+}
+
+li{
+    cursor: pointer;
+}

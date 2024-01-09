@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Template HTML CSS</title>
+        <title>ToDoList</title>
 
         <!-- FONT AWESOME -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -18,9 +18,31 @@
     <body>
         
         <div id="app">
-            <h1>
-                {{ message }}
-            </h1>
+            <h1 class="text-center mb-5">ToDoList</h1>
+            <div class="my-container">
+                <div class="text-center mb-3">
+                    <input v-model="newToDo" type="text" placeholder="Cosa devi fare?">
+                    <button class="ms-4" @click="addToDo()">
+                        Aggiungi attività
+                    </button>
+                </div>
+                <div>
+                    <ul v-if="todos.length > 0">
+                        <li 
+                        v-for="(elem, i) in todos"
+                        class="d-flex justify-content-between mb-2" 
+                        :class="{
+                            'done': elem.done == true,
+                            'not-done': elem.done == false,
+                        }"
+                        @click="check(i)">
+                            {{ elem.text }}
+                            <button class="text-end" @click="removeToDo(i)">X</button>
+                        </li>
+                    </ul>
+                    <p v-else class="fs-1 text-center">Non ci sono task</p>
+                </div>
+            </div>
         </div>
 
         <!-- Mio Script -->
