@@ -21,7 +21,7 @@
             <h1 class="text-center mb-5">ToDoList</h1>
             <div class="my-container">
                 <div class="text-center mb-3">
-                    <input v-model="newToDo" type="text" placeholder="Cosa devi fare?">
+                    <input v-model="newToDo" type="text" placeholder="Cosa devi fare?"  @keyup.enter="addToDo()">
                     <button class="ms-4" @click="addToDo()">
                         Aggiungi attività
                     </button>
@@ -32,11 +32,11 @@
                         v-for="(elem, i) in todos"
                         class="d-flex justify-content-between mb-2" 
                         :class="{
-                            'done': elem.done == true,
-                            'not-done': elem.done == false,
+                            'done': elem.done === true,
+                            'not-done': elem.done === false,
                         }"
-                        @click="check(i)">
-                            {{ elem.text }}
+                        >
+                            <div @click="check(i)">{{ elem.text }}</div>                            
                             <button class="text-end" @click="removeToDo(i)">X</button>
                         </li>
                     </ul>

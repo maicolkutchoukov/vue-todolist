@@ -68,17 +68,14 @@ createApp({
             
         },
         removeToDo(i){
-            console.log('entra',i);
-            console.log(this.todos[i])
-            this.todos.slice(1,0);
+            console.log(i);
+            console.log(this.todos[i]);
+            this.todos.splice(i, 1)
         },
         check(i){
-            if (!this.todos[i].done){
-                this.todos[i].done = true;
-            } else {
-                this.todos[i].done = false;
-            }
-        }
+            console.log('check', i)
+            this.todos[i].done = !this.todos[i].done;
+        },
     }
   // Monto l'istanza di Vue in pagina
 }).mount('#app');
