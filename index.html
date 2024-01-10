@@ -15,10 +15,10 @@
         <!-- Importazione Vue -->
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     </head>
-    <body>
+    <body class="bg-dark">
         
         <div id="app">
-            <h1 class="text-center mb-5">ToDoList</h1>
+            <h1 class="text-center mb-5 text-warning">ToDoList</h1>
             <div class="my-container">
                 <div class="text-center mb-3">
                     <input v-model="newToDo" type="text" placeholder="Cosa devi fare?"  @keyup.enter="addToDo()">
@@ -26,18 +26,20 @@
                         Aggiungi attività
                     </button>
                 </div>
-                <div>
+                <div class="bg-light">
                     <ul v-if="todos.length > 0">
                         <li 
                         v-for="(elem, i) in todos"
-                        class="d-flex justify-content-between mb-2" 
+                        class="d-flex justify-content-between mb-2 border rounded" 
                         :class="{
                             'done': elem.done === true,
                             'not-done': elem.done === false,
                         }"
                         >
                             <div @click="check(i)">{{ elem.text }}</div>                            
-                            <button class="text-end" @click="removeToDo(i)">X</button>
+                            <button class="delete-btn text-end" @click="removeToDo(i)">
+                                <i class="fa-solid fa-xmark fa-beat text-center"></i>
+                            </button>
                         </li>
                     </ul>
                     <p v-else class="fs-1 text-center">Non ci sono task</p>
